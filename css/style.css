@@ -8,6 +8,12 @@ padding:0;
 box-sizing:border-box;
 }
 
+img{
+max-width:100%;
+height:auto;
+display:block;
+}
+
 :root{
 
 --primary:#0a2540;
@@ -77,7 +83,6 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:0 5%;
-
 position:relative;
 
 }
@@ -111,7 +116,6 @@ nav{
 
 display:flex;
 align-items:center;
-transition:var(--transition);
 
 }
 
@@ -349,13 +353,75 @@ bottom:0;
 }
 
 /* =========================
+ATUAÇÃO
+========================= */
+
+#atuacao{
+background:#f8fafc;
+}
+
+.atuacao-desc{
+
+text-align:center;
+max-width:800px;
+margin:auto;
+color:var(--text);
+
+}
+
+.atuacao-grid{
+
+display:grid;
+grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+gap:30px;
+margin-top:40px;
+
+}
+
+.atuacao-item{
+
+background:white;
+border-radius:var(--radius);
+overflow:hidden;
+box-shadow:var(--shadow-sm);
+transition:var(--transition);
+
+}
+
+.atuacao-item:hover{
+
+transform:translateY(-8px);
+box-shadow:var(--shadow-lg);
+
+}
+
+.atuacao-item img{
+
+width:100%;
+height:200px;
+object-fit:cover;
+
+}
+
+.atuacao-item h3{
+
+padding:15px 20px 5px;
+
+}
+
+.atuacao-item p{
+
+padding:0 20px 20px;
+color:var(--text);
+
+}
+
+/* =========================
 FROTA
 ========================= */
 
 #frota{
-
 background:#e2e8f0;
-
 }
 
 .frota-grid{
@@ -385,22 +451,59 @@ color:var(--secondary);
 }
 
 /* =========================
-DIFERENCIAIS
+DIFERENCIAIS (RESTAURADO)
 ========================= */
 
 #diferenciais{
-
 background:white;
+}
+
+.diferenciais-desc{
+
+text-align:center;
+max-width:800px;
+margin:auto;
+margin-bottom:40px;
+color:var(--text);
 
 }
 
-/* =========================
-ATUAÇÃO
-========================= */
+.diferenciais-grid{
 
-#atuacao{
+display:grid;
+grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+gap:30px;
 
-background:#f8fafc;
+}
+
+.diferencial-item{
+
+background:var(--light);
+padding:30px;
+border-radius:var(--radius);
+text-align:center;
+box-shadow:var(--shadow-sm);
+transition:var(--transition);
+
+}
+
+.diferencial-item:hover{
+
+transform:translateY(-8px);
+box-shadow:var(--shadow-lg);
+
+}
+
+.diferencial-item .icon{
+
+font-size:40px;
+margin-bottom:15px;
+
+}
+
+.diferencial-item p{
+
+color:var(--text);
 
 }
 
@@ -461,15 +564,11 @@ RESPONSIVO TABLET
 @media(max-width:1024px){
 
 .quem-grid{
-
 grid-template-columns:1fr;
-
 }
 
 .hero h1{
-
 font-size:42px;
-
 }
 
 }
@@ -481,85 +580,45 @@ RESPONSIVO MOBILE
 @media(max-width:768px){
 
 .hero{
-
 padding:120px 20px;
 background-attachment:scroll;
-
 }
 
 .hero h1{
-
 font-size:32px;
-
 }
 
 .hero p{
-
 font-size:18px;
-
 }
 
-/* TOPO NORMAL */
+/* MENU MOBILE */
 
-.nav{
-
-flex-direction:column;
-
-}
-
-nav{
-
-flex-wrap:wrap;
-justify-content:center;
-
-}
-
-/* APÓS SCROLL */
-
-header.scrolled nav{
-
-display:none;
-
-}
-
-header.scrolled .menu-toggle{
-
+.menu-toggle{
 display:block;
 position:absolute;
 right:20px;
-top:10px;
-
+top:15px;
 }
 
-/* MENU QUANDO ABRE */
+nav{
+display:none;
+}
 
 nav.active{
-
-display:flex !important;
+display:flex;
 flex-direction:column;
-
 position:absolute;
 top:60px;
 left:0;
-
 width:100%;
 background:white;
-
-box-shadow:var(--shadow-md);
 padding:20px;
-
+box-shadow:var(--shadow-md);
 }
 
-.menu-toggle{
-
-display:none;
-
-}
-
-header.scrolled .menu-toggle{
-
-display:block;
-
+nav a{
+margin:12px 0;
 }
 
 }
