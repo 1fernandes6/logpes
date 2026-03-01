@@ -923,3 +923,23 @@ margin:15px 0;
 }
 
 }
+
+/* DESKTOP - garantir funcionamento normal */
+
+@media(min-width:769px){
+
+nav{
+
+max-height:none !important;
+
+position:static;
+
+flex-direction:row;
+
+background:none;
+
+box-shadow:none;
+
+}
+
+}
