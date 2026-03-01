@@ -449,12 +449,44 @@ Enviar Email
 <script>
 
 /* =========================
+SCROLL SUAVE NATIVO
+========================= */
+
+document.querySelectorAll('nav a').forEach(link => {
+
+link.addEventListener('click', function(e){
+
+const targetId = this.getAttribute('href');
+
+if(targetId.startsWith("#")){
+
+e.preventDefault();
+
+const target = document.querySelector(targetId);
+
+target.scrollIntoView({
+behavior: "smooth",
+block: "start"
+});
+
+/* fechar menu mobile após clicar */
+
+nav.classList.remove("active");
+
+}
+
+});
+
+});
+
+
+/* =========================
 NAVBAR DIMINUIR AO SCROLL
 ========================= */
 
-window.addEventListener("scroll", function(){
-
 const header = document.querySelector("header");
+
+window.addEventListener("scroll", function(){
 
 if(window.scrollY > 50){
 
@@ -470,7 +502,36 @@ header.classList.remove("scrolled");
 
 
 /* =========================
-FUNÇÃO ANIMAR NÚMEROS
+MENU MOBILE TOGGLE
+========================= */
+
+const toggle = document.getElementById("menu-toggle");
+const nav = document.getElementById("nav-menu");
+
+toggle.addEventListener("click", ()=>{
+
+nav.classList.toggle("active");
+
+});
+
+
+/* =========================
+FECHAR MENU AO CLICAR FORA
+========================= */
+
+document.addEventListener("click", function(e){
+
+if(!nav.contains(e.target) && !toggle.contains(e.target)){
+
+nav.classList.remove("active");
+
+}
+
+});
+
+
+/* =========================
+ANIMAR NÚMEROS
 ========================= */
 
 function animateNumber(counter){
@@ -478,8 +539,7 @@ function animateNumber(counter){
 const target = +counter.getAttribute("data-target");
 
 let count = 0;
-
-const speed = 120; // menor = mais rápido
+const speed = 120;
 
 function updateCount(){
 
@@ -507,7 +567,7 @@ updateCount();
 
 
 /* =========================
-OBSERVER PRINCIPAL (UNIFICADO)
+INTERSECTION OBSERVER
 ========================= */
 
 const observer = new IntersectionObserver((entries)=>{
@@ -518,13 +578,9 @@ if(entry.isIntersecting){
 
 entry.target.classList.add("show");
 
-
-/* anima números */
-
 if(entry.target.classList.contains("numero")){
 
 animateNumber(entry.target);
-
 observer.unobserve(entry.target);
 
 }
@@ -534,40 +590,32 @@ observer.unobserve(entry.target);
 });
 
 },{
-threshold:0.3
+threshold:0.25
 });
 
 
-/* =========================
-ELEMENTOS ANIMADOS
-========================= */
-
 document.querySelectorAll(
-
-".card, .quem-content, .quem-img, h2, .numero, .frota-item"
-
+".card, .quem-content, .quem-img, h2, .numero, .frota-item, .atuacao-item, .diferencial-item"
 ).forEach(el=>{
 
 el.classList.add("animate");
-
 observer.observe(el);
 
 });
 
+
 /* =========================
-MENU MOBILE TOGGLE
+LAZY LOADING IMAGENS
 ========================= */
 
-const toggle = document.getElementById("menu-toggle");
-const nav = document.getElementById("nav-menu");
+document.querySelectorAll("img").forEach(img => {
 
-toggle.addEventListener("click", ()=>{
-
-nav.classList.toggle("active");
+img.loading = "lazy";
 
 });
 
 </script>
 
 </body>
+
 </html>
